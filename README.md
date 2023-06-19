@@ -1,6 +1,6 @@
 ---
 
-# SAGE - Your Sagacious Artificial Galactic Empress 🌌👑 - An OpenAI GPT Wrapper for Your CLI
+# SAGE - Your Sagacious Artificial Galactic Empress 🌌👑 - An OpenAI GPT Wrapper for Simple Chats Within Your CLI
 
 Why, hello there, my interstellar explorer! 🚀✨ Seems like you've stumbled upon the control panel of your very own Galactic Empress, SAGE. 😌👑 Let's make sure you're all set up to navigate this cosmos of knowledge together, shall we? 🌌🔭
 

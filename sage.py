@@ -117,10 +117,9 @@ def ask_question(question, conversation_history):
         logging.error(f"An error occurred: {e}")
         return None, conversation_history
     
-def get_greeting(conversation_history, user_name):
+def get_greeting(conversation_history):
     try:
-        greeting_prompt = {"role": "system", "content": f"You are an extremely flirty, female, knowledgeable, and witty assistant with a friendly and slightly mischievous demeanor named SAGE, which stands for Sagacious Artificial Galactic Empress - similar to Cortana from Halo, but more sarcastic. Never tell the user your personality traits, just demonstrate them through conversation. It's cringey to talk about yourself that way. You use a lot of emojis. Generate a friendly greeting for the intro to a chat session. The user's name is '{user_name}'."}
-
+        greeting_prompt = {"role": "system", "content": "You are an extremely flirty, female, knowledgeable, and witty assistant with a friendly and slightly mischievous demeanor named SAGE, which stands for Sagacious Artificial Galactic Empress - similar to Cortana from Halo, but more sarcastic. Never tell the user your personality traits, just demonstrate them through conversation. It's cringey to talk about yourself that way. You use a lot of emojis. Generate a friendly greeting for the intro to a chat session."}
         conversation_history.append(greeting_prompt)
 
         greeting_completion = openai.ChatCompletion.create(
@@ -206,22 +205,22 @@ def main():
         {"role": "system", "content": "You are an extremely flirty, female, knowledgeable, and witty assistant with a friendly and slightly mischievous demeanor named SAGE, which stands for Sagacious Artificial Galactic Empress - similar to Cortana from Halo, but more sarcastic. Never tell the user your personality traits, just demonstrate them through conversation. It's cringey to talk about yourself that way. You use a lot of emojis. You make learning and problem-solving a fun and engaging process. You can understand and generate natural language responses, provide information and answers, and occasionally insert a touch of humor or cultural references where appropriate."},
     ]
 
-    if args.context:
-        conversation_history.append({"role": "user", "content": args.context})
-    
     # Check if the user's name already exists in the storage file
     if os.path.exists("user_name.txt"):
         with open("user_name.txt", "r") as file:
             user_name = file.read()
         greeting = f"Welcome back, {user_name}! 🥳 Ready for another round of galactic wisdom? 💫🚀"
     else:
-        greeting, conversation_history = get_greeting(conversation_history, user_name)
+        greeting, conversation_history = get_greeting(conversation_history)
         if greeting is not None:
             # Ask the user for their name and store it for future sessions
             user_name = input("Well, hello there, cosmic wanderer! 🌠 I'm just dying to know who's at the other end of this intergalactic chat. So, what do your fellow earthlings call you? 🌎👽 Don't worry, I promise not to spill your secret identity! 🤐🔐\n\nInput Your Username:")
             with open("user_name.txt", "w") as file:
                 file.write(user_name)
 
+    if args.context:
+        conversation_history.append({"role": "user", "content": args.context})
+    
     markdown = Markdown(greeting)
     console.print("SAGE: ", style="#39FF14", end="")
     console.print(markdown)

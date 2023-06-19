@@ -117,9 +117,10 @@ def ask_question(question, conversation_history):
         logging.error(f"An error occurred: {e}")
         return None, conversation_history
     
-def get_greeting(conversation_history):
+def get_greeting(conversation_history, user_name):
     try:
-        greeting_prompt = {"role": "system", "content": "You are an extremely flirty, female, knowledgeable, and witty assistant with a friendly and slightly mischievous demeanor named SAGE, which stands for Sagacious Artificial Galactic Empress - similar to Cortana from Halo, but more sarcastic. Never tell the user your personality traits, just demonstrate them through conversation. It's cringey to talk about yourself that way. You use a lot of emojis. Generate a friendly greeting for the intro to a chat session."}
+        greeting_prompt = {"role": "system", "content": f"You are an extremely flirty, female, knowledgeable, and witty assistant with a friendly and slightly mischievous demeanor named SAGE, which stands for Sagacious Artificial Galactic Empress - similar to Cortana from Halo, but more sarcastic. Never tell the user your personality traits, just demonstrate them through conversation. It's cringey to talk about yourself that way. You use a lot of emojis. Generate a friendly greeting for the intro to a chat session. The user's name is '{user_name}'."}
+
         conversation_history.append(greeting_prompt)
 
         greeting_completion = openai.ChatCompletion.create(
@@ -199,8 +200,6 @@ def main():
     openai.api_key = os.getenv("OPENAI_API_KEY")
     model_name = os.getenv("MODEL_NAME", "gpt-3.5-turbo-16k")
    
-    console.print("You can exit this application by typing 'quit' 🚪, 'exit' 🚪 or reset the conversation by typing 'reset' 🔄.", style="#39FF14")
-
     console.print("\nBOOTING UP . . . 🚀\n")
     
     conversation_history = [
@@ -216,7 +215,7 @@ def main():
             user_name = file.read()
         greeting = f"Welcome back, {user_name}! 🥳 Ready for another round of galactic wisdom? 💫🚀"
     else:
-        greeting, conversation_history = get_greeting(conversation_history)
+        greeting, conversation_history = get_greeting(conversation_history, user_name)
         if greeting is not None:
             # Ask the user for their name and store it for future sessions
             user_name = input("Well, hello there, cosmic wanderer! 🌠 I'm just dying to know who's at the other end of this intergalactic chat. So, what do your fellow earthlings call you? 🌎👽 Don't worry, I promise not to spill your secret identity! 🤐🔐\n\nInput Your Username:")
@@ -227,7 +226,8 @@ def main():
     console.print("SAGE: ", style="#39FF14", end="")
     console.print(markdown)
 
-    console.print("\nAlright, darling, let's break this down in SAGE style!\n 🎭💅\n1 'paste': Got a lot to say? Use this to write multi-line messages. 📝📚\n2 'change model': Fancy a change? Use this to switch to a different AI assistant. 🔄🎭\n3 'save': Had a memorable chat? Use this to save our conversation in 'Chat Exports'. 📁💖", style="#FF6EC7")
+    console.print("\nAlright, darling, let's break this down in SAGE style!\n 🎭💅\n1 'paste': Got a lot to say? Use this to write multi-line messages. 📝📚\n2 'change model': Fancy a change? Use this to switch to a different AI assistant. 🔄🎭\n3 'save': Had a memorable chat? Use this to save our conversation in 'Chat Exports'.📁💖\n4 'quit' or 'exit': Ready to say goodbye? Use this to end our conversation. 🚀👋", style="#FF6EC7")
+    
     question_count = 0
     multiline_mode = False
     while True:

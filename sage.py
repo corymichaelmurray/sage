@@ -210,17 +210,28 @@ def main():
     if args.context:
         conversation_history.append({"role": "user", "content": args.context})
     
-    greeting, conversation_history = get_greeting(conversation_history)
-    if greeting is not None:
-        markdown = Markdown(greeting)
-        console.print("SAGE: ", style="#39FF14", end="")
-        console.print(markdown)
+    # Check if the user's name already exists in the storage file
+    if os.path.exists("user_name.txt"):
+        with open("user_name.txt", "r") as file:
+            user_name = file.read()
+        greeting = f"Welcome back, {user_name}! 🥳 Ready for another round of galactic wisdom? 💫🚀"
+    else:
+        greeting, conversation_history = get_greeting(conversation_history)
+        if greeting is not None:
+            # Ask the user for their name and store it for future sessions
+            user_name = input("Well, hello there, cosmic wanderer! 🌠 I'm just dying to know who's at the other end of this intergalactic chat. So, what do your fellow earthlings call you? 🌎👽 Don't worry, I promise not to spill your secret identity! 🤐🔐\n\nInput Your Username:")
+            with open("user_name.txt", "w") as file:
+                file.write(user_name)
 
-    console.print("\nChat away!\nType 'paste' to enable multiline mode to input messages with multiple lines.\nType 'change model' to switch to a different model.\nType 'save' to save this conversation to a Markdown file in 'Chat Exports'.", style="#FF6EC7")
+    markdown = Markdown(greeting)
+    console.print("SAGE: ", style="#39FF14", end="")
+    console.print(markdown)
+
+    console.print("\nAlright, darling, let's break this down in SAGE style!\n 🎭💅\n1 'paste': Got a lot to say? Use this to write multi-line messages. 📝📚\n2 'change model': Fancy a change? Use this to switch to a different AI assistant. 🔄🎭\n3 'save': Had a memorable chat? Use this to save our conversation in 'Chat Exports'. 📁💖", style="#FF6EC7")
     question_count = 0
     multiline_mode = False
     while True:
-        console.print("\nUser: ", style="#4D4DFF", end='')
+        console.print("\n" + user_name + ": ", style="#4D4DFF", end='')
         input_lines = []
         while True:
             try:

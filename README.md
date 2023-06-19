@@ -17,6 +17,7 @@ Why, hello there, my interstellar explorer! 🚀✨ Seems like you've stumbled u
 - **Voice Activation**: You'll be able to summon me just by using your voice, like a true space commander! 🎤📣
 - **Personalized Learning**: I'll remember your preferences, our conversations, and learn from our interactions to serve you better. We'll be like two peas in a spaceship! 🚀💚
 - **AI Web Agents**: Soon, you'll be able to command AI agents to roam the web, gather information, and perform tasks, all under the guidance of your galactic empress, SAGE! 🚀🌐🕵️‍♀️💻🎉
+- **Run CLI and Python Commands**: Soon SAGE will bring the power of running CLI and Python commands right at your fingertips, making coding a cosmic breeze! 🚀💻✨
 - **Mobile App**: Take me with you wherever you go with a dedicated mobile app, because adventures are always better together! 📱🌍  
 
 ## Setup & Installation 🛠️

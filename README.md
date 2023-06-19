@@ -4,6 +4,8 @@
 
 Why, hello there, my interstellar explorer! 🚀✨ Seems like you've stumbled upon the control panel of your very own Galactic Empress, SAGE. 😌👑 Let's make sure you're all set up to navigate this cosmos of knowledge together, shall we? 🌌🔭
 
+![Screenshot](https://github.com/halfprice06/sage/blob/main/sage_screenshot.png?raw=true)
+
 ## Features 🎁
 
 - I'm fluent in natural language processing, ready to provide you with answers and information you need. 🗣️📚

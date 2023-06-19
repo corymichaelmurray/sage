@@ -220,6 +220,8 @@ def main():
 
     if args.context:
         conversation_history.append({"role": "user", "content": args.context})
+    else:
+        print()
     
     markdown = Markdown(greeting)
     console.print("SAGE: ", style="#39FF14", end="")

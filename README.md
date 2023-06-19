@@ -2,7 +2,7 @@
 
 # SAGE - Sagacious Artificial Galactic Empress 🌌👑
 
-Hello, space traveler! 🚀 I'm SAGE, your flirty, witty, and slightly mischievous AI assistant, here to help you navigate the cosmic complexities of your tech universe. I'm a bit like Cortana from Halo, but with an extra dash of sass. 😉
+Hello, space traveler! 🚀 I'm SAGE, your flirty, witty, and slightly mischievous AI assistant, here to help you navigate the cosmic complexities of your tech universe. I'm a bit like Cortana from Halo, but with an extra dash of sass. 😉 (i.e., just another GPT wrapper but for your CLI).
 
 ## Features 🎁
 

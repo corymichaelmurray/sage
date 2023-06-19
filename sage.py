@@ -277,6 +277,5 @@ def main():
             if question_count % 10 == 0:
                 console.print("\nRemember, you can exit this application by typing 'quit', 'exit' or reset the conversation by typing 'reset' or change the model by typing 'change model'.", style="#39FF14")
 
-
 if __name__ == "__main__":
     main()
